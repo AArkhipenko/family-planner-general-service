@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Swashbuckle.AspNetCore.Swagger;
+using System.Reflection;
 
 namespace General.Service.Api.Extensions
 {
@@ -20,19 +21,18 @@ namespace General.Service.Api.Extensions
         /// <param name="services"><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /></param>
         public static void PrepareAndAddSwagger(this IServiceCollection services)
         {
-            services.AddSwaggerGen(c =>
+            services.AddSwaggerGen(options =>
             {
-                c.SwaggerDoc("v10", new OpenApiInfo { Title = Consts.ServiceTitle, Version = "1.0", Description = "Сервис для работы с основной информацией v1.0." });
+                options.SwaggerDoc("v10", new OpenApiInfo { Title = Consts.ServiceTitle, Version = "1.0", Description = "Сервис для работы с основной информацией v1.0." });
 
-                var xmlDoc = Path.ChangeExtension(System.Reflection.Assembly.GetEntryAssembly().Location, "xml");
-                if(File.Exists(xmlDoc))
+                var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                if (File.Exists(xmlFilename))
                 {
-                    c.IncludeXmlComments(xmlDoc);
+                    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
                 }
 
-                c.UseInlineDefinitionsForEnums();
-
-                c.EnableAnnotations();
+                options.UseInlineDefinitionsForEnums();
+                options.EnableAnnotations();
             });
         }
 

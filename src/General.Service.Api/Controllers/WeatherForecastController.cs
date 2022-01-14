@@ -4,13 +4,14 @@ using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace General.Service.Api.Controllers
 {
     [Produces("application/json")]
     [Route("weather-forecast/v10")]
-    [ApiExplorerSettings(GroupName = "10")]
+    [ApiExplorerSettings(GroupName = "v10")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -27,7 +28,7 @@ namespace General.Service.Api.Controllers
 
         [HttpGet]
         [SwaggerOperation(Description = "Возвращает данные для прогноза погоды")]
-        [SwaggerResponse(200, Type = typeof(IEnumerable<WeatherForecast>), Description = "Данные для прогноза погоды")]
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(IEnumerable<WeatherForecast>), Description = "Данные для прогноза погоды")]
         public IActionResult Get()
         {
             var rng = new Random();
