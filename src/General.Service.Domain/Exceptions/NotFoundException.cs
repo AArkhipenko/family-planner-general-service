@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace General.Service.Domain.Exceptions
 {
+    /// <summary>
+    /// Исключение поиска
+    /// </summary>
     public class NotFoundException: Exception
     {
         public NotFoundException() : base()

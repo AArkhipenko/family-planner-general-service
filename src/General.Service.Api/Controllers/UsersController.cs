@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace General.Service.Api.Controllers
 {
+    /// <summary>
+    /// Контроллер для получения информации по пользователям
+    /// </summary>
     [Produces("application/json")]
     [Route("user/v10")]
     [ApiExplorerSettings(GroupName = "v10")]
@@ -20,7 +23,7 @@ namespace General.Service.Api.Controllers
         /// <summary>
         /// Конструктор <see cref="UsersController" />
         /// </summary>
-        /// <param name="mediator"></param>
+        /// <param name="mediator"><see cref="IMediator" /></param>
         public UsersController(IMediator mediator)
         {
             this._mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));

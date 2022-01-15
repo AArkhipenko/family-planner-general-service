@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace General.Service.Api
 {
+    /// <summary>
+    /// Константы
+    /// </summary>
     public class Consts
     {
         public const string ServiceTitle = "General.Service";

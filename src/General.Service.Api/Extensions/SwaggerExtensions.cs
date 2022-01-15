@@ -13,13 +13,16 @@ using System.Reflection;
 
 namespace General.Service.Api.Extensions
 {
-    public static class SwaggerExtensions
+    /// <summary>
+    /// Расширения связаннные с работой swagger
+    /// </summary>
+    internal static class SwaggerExtensions
     {
         /// <summary>
         /// Настройка и добавление Swagger в коллекцию <see cref="IServiceCollection" />
         /// </summary>
         /// <param name="services"><see cref="IServiceCollection" /></param>
-        public static void PrepareAndAddSwagger(this IServiceCollection services)
+        internal static void PrepareAndAddSwagger(this IServiceCollection services)
         {
             services.AddSwaggerGen(options =>
             {
@@ -36,7 +39,7 @@ namespace General.Service.Api.Extensions
             });
         }
 
-        public static void PrepareAndUseSwagger(this IApplicationBuilder app, IWebHostEnvironment env)
+        internal static void PrepareAndUseSwagger(this IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseSwagger(c =>
             {

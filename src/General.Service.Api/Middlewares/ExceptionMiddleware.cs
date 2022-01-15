@@ -10,17 +10,30 @@ using System.Threading.Tasks;
 
 namespace General.Service.Api.Middlewares
 {
+    /// <summary>
+    /// Обработка ошибок на среднем слое
+    /// </summary>
     internal class ExceptionMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly ILogger<ExceptionMiddleware> _logger;
 
+        /// <summary>
+        /// Конструктор <see cref="ExceptionMiddleware" />
+        /// </summary>
+        /// <param name="next">запрос</param>
+        /// <param name="logger">логирование</param>
         public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
         {
             _next = next;
             _logger = logger;
         }
 
+        /// <summary>
+        /// Выполнение запросов
+        /// </summary>
+        /// <param name="context">контекст запроса</param>
+        /// <returns></returns>
         public async Task InvokeAsync(HttpContext context)
         {
             try
