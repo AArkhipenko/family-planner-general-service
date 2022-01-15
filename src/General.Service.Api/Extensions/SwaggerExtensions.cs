@@ -16,9 +16,9 @@ namespace General.Service.Api.Extensions
     public static class SwaggerExtensions
     {
         /// <summary>
-        /// Настройка и добавление Swagger в коллекцию <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />
+        /// Настройка и добавление Swagger в коллекцию <see cref="IServiceCollection" />
         /// </summary>
-        /// <param name="services"><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /></param>
+        /// <param name="services"><see cref="IServiceCollection" /></param>
         public static void PrepareAndAddSwagger(this IServiceCollection services)
         {
             services.AddSwaggerGen(options =>

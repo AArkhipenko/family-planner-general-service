@@ -1,16 +1,12 @@
 using General.Service.Api.Extensions;
+using General.Service.Api.Middlewares;
+using General.Service.Infrastructure.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace General.Service.Api
 {
@@ -30,12 +26,22 @@ namespace General.Service.Api
             services.AddControllers();
 
             services.PrepareAndAddSwagger();
+            services.AddMediators();
+            services.AddDbContext(new DatabaseOptions
+            {
+                Address = "localhost",
+                Port = 5432,
+                DatabaseName = "family_planner",
+                Username = "application_user",
+                Password = "application_user"
+            });
+            services.AddRepositories();
 
             services.AddMvc()
-                .AddMvcOptions( c =>
-                {
-                    c.EnableEndpointRouting = false;
-                })
+                .AddMvcOptions(c =>
+               {
+                   c.EnableEndpointRouting = false;
+               })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
@@ -48,6 +54,7 @@ namespace General.Service.Api
             }
 
             app.PrepareAndUseSwagger(env);
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseMvcWithDefaultRoute();
         }
