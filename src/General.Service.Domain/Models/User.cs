@@ -31,6 +31,22 @@ namespace General.Service.Domain.Models
         }
 
         /// <summary>
+        /// Конструктор <see cref="GetUserListQuery" />
+        /// </summary>
+        /// <param name="name">имя пользователя</param>
+        /// <param name="surname">фамилия пользователя</param>
+        /// <param name="birthday">дата рождения</param>
+        public User(
+            string name,
+            string surname,
+            DateTime birthday)
+        {
+            this.Name = name;
+            this.Surname = surname;
+            this.Birthday = birthday;
+        }
+
+        /// <summary>
         /// Идентификатор записи
         /// </summary>
         public int Id { get; }

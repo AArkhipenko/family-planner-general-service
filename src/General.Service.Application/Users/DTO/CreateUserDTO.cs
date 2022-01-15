@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace General.Service.Application.Users.DTO
 {
     /// <summary>
-    /// DTO записи списка пользователей
+    /// DTO модель создания пользователя
     /// </summary>
-    public class UserListDTO: UserDTO
+    public class CreateUserDTO: UserDTO
     {
     }
 }

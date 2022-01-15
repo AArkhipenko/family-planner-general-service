@@ -1,14 +1,17 @@
-﻿using General.Service.Application.Users.DTO;
+﻿using General.Service.Application.Users.Commands;
+using General.Service.Application.Users.DTO;
 using General.Service.Application.Users.Queries;
+using General.Service.Application.Users.Validators;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace General.Service.Api.Controllers
+namespace General.Service.Api.Controllers.V10
 {
     /// <summary>
     /// Контроллер для получения информации по пользователям
@@ -49,6 +52,28 @@ namespace General.Service.Api.Controllers
                 throw new ArgumentException("Количество записей должно быть больше ноля");
 
             var result = await this._mediator.Send(new GetUserListQuery(offset, count));
+            return Ok(result);
+        }
+
+
+        /// <summary>
+        /// Добавление нового пользователя
+        /// </summary>
+        /// <param name="model">модель пользователя</param>
+        /// <returns>идентификатор пользователя</returns>
+        [HttpPost]
+        [SwaggerOperation(Description = "Добавление нового пользователя")]
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(int), Description = "Идентификатор нового пользователя")]
+        [SwaggerResponse((int)HttpStatusCode.BadRequest, Description = "Неверно указаны параметры")]
+        public async Task<IActionResult> CreateAsync([FromBody][Required] CreateUserDTO model)
+        {
+            var validator = new CreateUserDTOValidator();
+            var validateResult = await validator.ValidateAsync(model);
+
+            if (!validateResult.IsValid)
+                throw new ArgumentException(validateResult.ToString());
+
+            var result = await this._mediator.Send(new CreateUserCommand(model));
             return Ok(result);
         }
     }
