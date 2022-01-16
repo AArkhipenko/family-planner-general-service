@@ -9,6 +9,21 @@
             Константы
             </summary>
         </member>
+        <member name="F:General.Service.Api.Consts.ServiceTitle">
+            <summary>
+            Заголовок сервиса
+            </summary>
+        </member>
+        <member name="F:General.Service.Api.Consts.SwaggerRoutePrefix">
+            <summary>
+            Префикс в пути для swagger
+            </summary>
+        </member>
+        <member name="F:General.Service.Api.Consts.ApiTitle">
+            <summary>
+            Заголовок на странице swagger
+            </summary>
+        </member>
         <member name="T:General.Service.Api.Controllers.V10.UsersController">
             <summary>
             Контроллер для получения информации по пользователям

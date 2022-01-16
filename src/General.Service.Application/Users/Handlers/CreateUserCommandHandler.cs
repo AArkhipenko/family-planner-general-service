@@ -1,13 +1,8 @@
 ﻿using General.Service.Application.Users.Commands;
-using General.Service.Application.Users.DTO;
-using General.Service.Application.Users.Queries;
 using General.Service.Domain.Models;
 using General.Service.Domain.Repositories;
 using MediatR;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
