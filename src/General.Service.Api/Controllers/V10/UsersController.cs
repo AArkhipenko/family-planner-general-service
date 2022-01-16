@@ -63,7 +63,7 @@ namespace General.Service.Api.Controllers.V10
         /// <returns>идентификатор пользователя</returns>
         [HttpPost]
         [SwaggerOperation(Description = "Добавление нового пользователя")]
-        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(int), Description = "Идентификатор нового пользователя")]
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(int), Description = "Создание прошло удачно")]
         [SwaggerResponse((int)HttpStatusCode.BadRequest, Description = "Неверно указаны параметры")]
         public async Task<IActionResult> CreateAsync([FromBody][Required] CreateUserDTO model)
         {
@@ -75,6 +75,28 @@ namespace General.Service.Api.Controllers.V10
 
             var result = await this._mediator.Send(new CreateUserCommand(model));
             return Ok(result);
+        }
+
+        /// <summary>
+        /// Изменение существующего пользователя
+        /// </summary>
+        /// <param name="model">модель пользователя</param>
+        /// <returns>идентификатор пользователя</returns>
+        [HttpPatch]
+        [SwaggerOperation(Description = "Изменение существующего пользователя")]
+        [SwaggerResponse((int)HttpStatusCode.NoContent, Description = "Изменение прошло удачно")]
+        [SwaggerResponse((int)HttpStatusCode.BadRequest, Description = "Неверно указаны параметры")]
+        [SwaggerResponse((int)HttpStatusCode.NotFound, Description = "Не найдена запись пользователя")]
+        public async Task<IActionResult> UpdateAsync([FromBody][Required] UpdateUserDTO model)
+        {
+            var validator = new UpdateUserDTOValidator();
+            var validateResult = await validator.ValidateAsync(model);
+
+            if (!validateResult.IsValid)
+                throw new ArgumentException(validateResult.ToString());
+
+            var result = await this._mediator.Send(new UpdateUserCommand(model));
+            return NoContent();
         }
     }
 }

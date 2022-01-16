@@ -11,7 +11,7 @@ namespace General.Service.Application.Users.Validators
     /// <summary>
     /// Валидатор данных для создания пользователя
     /// </summary>
-    public class CreateUserDTOValidator: AbstractValidator<CreateUserDTO>
+    public class CreateUserDTOValidator : AbstractValidator<UserDTO>
     {
         /// <summary>
         /// Конструктор <see cref="CreateUserDTOValidator" />
