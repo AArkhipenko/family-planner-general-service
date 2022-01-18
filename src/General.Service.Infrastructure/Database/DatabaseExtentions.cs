@@ -34,6 +34,7 @@ namespace General.Service.Infrastructure.Database
         public static void AddRepositories(this IServiceCollection services)
         {
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<ITypeRepository, TypeRepository>();
         }
     }
 }
