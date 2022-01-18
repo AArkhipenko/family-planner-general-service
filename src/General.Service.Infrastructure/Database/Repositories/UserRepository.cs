@@ -42,6 +42,16 @@ namespace General.Service.Infrastructure.Database.Repositories
                 .AsAsyncEnumerable();
         }
 
+        public async Task<DomainExt.User> GetAsync(int id)
+        {
+            var member = await this.GetMemberAsync(id);
+            return new DomainExt.User(
+                member.Id,
+                member.Name,
+                member.Surname,
+                member.Birthday);
+        }
+
         public async Task<int> CreateAsync(DomainExt.User model)
         {
             var member = new User
