@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace General.Service.Infrastructure.Database
+﻿namespace General.Service.Infrastructure.Database
 {
     /// <summary>
     /// Настройки подключения к БД

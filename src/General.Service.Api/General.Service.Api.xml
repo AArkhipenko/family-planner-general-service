@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>General.Service.Api</name>
+    </assembly>
+    <members>
+        <member name="T:General.Service.Api.Consts">
+            <summary>
+            Константы
+            </summary>
+        </member>
+        <member name="F:General.Service.Api.Consts.ServiceTitle">
+            <summary>
+            Заголовок сервиса
+            </summary>
+        </member>
+        <member name="F:General.Service.Api.Consts.SwaggerRoutePrefix">
+            <summary>
+            Префикс в пути для swagger
+            </summary>
+        </member>
+        <member name="F:General.Service.Api.Consts.ApiTitle">
+            <summary>
+            Заголовок на странице swagger
+            </summary>
+        </member>
+        <member name="T:General.Service.Api.Controllers.V10.UsersController">
+            <summary>
+            Контроллер для получения информации по пользователям
+            </summary>
+        </member>
+        <member name="M:General.Service.Api.Controllers.V10.UsersController.#ctor(MediatR.IMediator)">
+            <summary>
+            Конструктор <see cref="T:General.Service.Api.Controllers.V10.UsersController" />
+            </summary>
+            <param name="mediator"><see cref="T:MediatR.IMediator" /></param>
+        </member>
+        <member name="M:General.Service.Api.Controllers.V10.UsersController.GetListAsync(System.Int32,System.Int32)">
+            <summary>
+            Получение списка пользователей
+            </summary>
+            <param name="offset">смещение (в количестве записей)</param>
+            <param name="count">количество записей</param>
+            <returns>Список пользователей</returns>
+        </member>
+        <member name="M:General.Service.Api.Controllers.V10.UsersController.CreateAsync(General.Service.Application.Users.DTO.CreateUserDTO)">
+            <summary>
+            Добавление нового пользователя
+            </summary>
+            <param name="model">модель пользователя</param>
+            <returns>идентификатор пользователя</returns>
+        </member>
+        <member name="M:General.Service.Api.Controllers.V10.UsersController.UpdateAsync(General.Service.Application.Users.DTO.UpdateUserDTO)">
+            <summary>
+            Изменение существующего пользователя
+            </summary>
+            <param name="model">модель пользователя</param>
+            <returns>идентификатор пользователя</returns>
+        </member>
+        <member name="T:General.Service.Api.Extensions.MediatorExtensions">
+            <summary>
+            Расширения связанные с медиторами
+            </summary>
+        </member>
+        <member name="M:General.Service.Api.Extensions.MediatorExtensions.AddMediators(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Добавление поддержки медаторов <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />
+            </summary>
+            <param name="services"><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /></param>
+        </member>
+        <member name="T:General.Service.Api.Extensions.SwaggerExtensions">
+            <summary>
+            Расширения связаннные с работой swagger
+            </summary>
+        </member>
+        <member name="M:General.Service.Api.Extensions.SwaggerExtensions.PrepareAndAddSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Настройка и добавление Swagger в коллекцию <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />
+            </summary>
+            <param name="services"><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /></param>
+        </member>
+        <member name="T:General.Service.Api.Middlewares.ExceptionMiddleware">
+            <summary>
+            Обработка ошибок на среднем слое
+            </summary>
+        </member>
+        <member name="M:General.Service.Api.Middlewares.ExceptionMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Logging.ILogger{General.Service.Api.Middlewares.ExceptionMiddleware})">
+            <summary>
+            Конструктор <see cref="T:General.Service.Api.Middlewares.ExceptionMiddleware" />
+            </summary>
+            <param name="next">запрос</param>
+            <param name="logger">логирование</param>
+        </member>
+        <member name="M:General.Service.Api.Middlewares.ExceptionMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Выполнение запросов
+            </summary>
+            <param name="context">контекст запроса</param>
+            <returns></returns>
+        </member>
+        <member name="M:General.Service.Api.Middlewares.ExceptionMiddleware.ReadFullExceptionAsync(System.Exception,System.Boolean)">
+            <summary>
+            Рекурсивная функция получения всех вложенных ошибок
+            </summary>
+            <param name="ex">верхняя ошибка</param>
+            <param name="isFirst">флаг нулевого уровня вложенности</param>
+            <returns>Дерево ошибок</returns>
+        </member>
+        <member name="T:General.Service.Api.Middlewares.ExceptionResponseContent">
+            <summary>
+            Модель данных для ответа на запросы с исключениями
+            </summary>
+        </member>
+        <member name="P:General.Service.Api.Middlewares.ExceptionResponseContent.ErrorMessage">
+            <summary>
+            Сообщение
+            </summary>
+        </member>
+        <member name="P:General.Service.Api.Middlewares.ExceptionResponseContent.StackTrace">
+            <summary>
+            Путь возникновения исключения
+            </summary>
+        </member>
+        <member name="P:General.Service.Api.Middlewares.ExceptionResponseContent.InnerException">
+            <summary>
+            Внутренние исключения
+            </summary>
+        </member>
+    </members>
+</doc>

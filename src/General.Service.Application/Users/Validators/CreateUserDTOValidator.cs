@@ -1,17 +1,13 @@
 ﻿using FluentValidation;
 using General.Service.Application.Users.DTO;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace General.Service.Application.Users.Validators
 {
     /// <summary>
     /// Валидатор данных для создания пользователя
     /// </summary>
-    public class CreateUserDTOValidator: AbstractValidator<CreateUserDTO>
+    public class CreateUserDTOValidator : AbstractValidator<UserDTO>
     {
         /// <summary>
         /// Конструктор <see cref="CreateUserDTOValidator" />

@@ -1,4 +1,5 @@
-﻿using General.Service.Domain.Repositories;
+﻿using General.Service.Domain.Exceptions;
+using General.Service.Domain.Repositories;
 using General.Service.Infrastructure.Database.Tables;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -30,6 +31,7 @@ namespace General.Service.Infrastructure.Database.Repositories
         {
             return this._context
                 .Users
+                .OrderBy(x => x.Id)
                 .Skip(offset)
                 .Take(count)
                 .Select(x => new DomainExt.User(
@@ -42,17 +44,41 @@ namespace General.Service.Infrastructure.Database.Repositories
 
         public async Task<int> CreateAsync(DomainExt.User model)
         {
-            var data = new User
+            var member = new User
             {
                 Name = model.Name,
                 Surname = model.Surname,
                 Birthday = model.Birthday
             };
 
-            this._context.Users.Add(data);
+            this._context.Users.Add(member);
             await this._context.SaveChangesAsync();
 
-            return data.Id;
+            return member.Id;
+        }
+
+        public async Task UpdateAsync(DomainExt.User model)
+        {
+            var member = await this.GetMemberAsync(model.Id);
+
+            member.Name = model.Name;
+            member.Surname = model.Surname;
+            member.Birthday = model.Birthday;
+
+            await this._context.SaveChangesAsync();
+        }
+
+        /// <summary>
+        /// Поиск пользователя по ид
+        /// </summary>
+        /// <param name="id">ид записи</param>
+        /// <returns>данные пользователь</returns>
+        private async Task<User> GetMemberAsync(int id)
+        {
+            var result = await this._context.Users.FindAsync(id);
+            if (result is null)
+                throw new NotFoundException($"Пользователь с идентификатором {id} не найден");
+            return result;
         }
     }
 }

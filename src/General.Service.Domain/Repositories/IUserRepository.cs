@@ -1,8 +1,5 @@
 ﻿using General.Service.Domain.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace General.Service.Domain.Repositories
@@ -26,5 +23,12 @@ namespace General.Service.Domain.Repositories
         /// <param name="model">данные пользователя</param>
         /// <returns>идентификатор записи</returns>
         Task<int> CreateAsync(User model);
+
+        /// <summary>
+        /// Изменение пользователя
+        /// </summary>
+        /// <param name="model">данные пользователя</param>
+        /// <returns></returns>
+        Task UpdateAsync(User model);
     }
 }
