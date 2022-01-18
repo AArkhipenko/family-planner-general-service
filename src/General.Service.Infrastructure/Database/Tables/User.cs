@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("General.Service.Api.Test")]
 
 namespace General.Service.Infrastructure.Database.Tables
 {

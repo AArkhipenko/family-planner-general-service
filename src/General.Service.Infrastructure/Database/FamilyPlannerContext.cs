@@ -1,5 +1,8 @@
 ﻿using General.Service.Infrastructure.Database.Tables;
 using Microsoft.EntityFrameworkCore;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("General.Service.Api.Test")]
 
 namespace General.Service.Infrastructure.Database
 {
