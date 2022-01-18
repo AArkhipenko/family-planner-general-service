@@ -38,7 +38,7 @@ namespace General.Service.Api.Test.Controllers.V10
             var response = await _client.PatchAsync($"/user/v10", model.ToHttpContent());
 
             // Assert
-            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
             var member = await context.Users.FindAsync(model.Id);
             Assert.Equal(member.Name, model.Name);

@@ -81,10 +81,10 @@ namespace General.Service.Api.Controllers.V10
         /// Изменение существующего пользователя
         /// </summary>
         /// <param name="model">модель пользователя</param>
-        /// <returns>идентификатор пользователя</returns>
+        /// <returns></returns>
         [HttpPatch]
         [SwaggerOperation(Description = "Изменение существующего пользователя")]
-        [SwaggerResponse((int)HttpStatusCode.NoContent, Description = "Изменение прошло удачно")]
+        [SwaggerResponse((int)HttpStatusCode.OK, Description = "Изменение прошло удачно")]
         [SwaggerResponse((int)HttpStatusCode.BadRequest, Description = "Неверно указаны параметры")]
         [SwaggerResponse((int)HttpStatusCode.NotFound, Description = "Не найдена запись пользователя")]
         public async Task<IActionResult> UpdateAsync([FromBody][Required] UpdateUserDTO model)
@@ -95,8 +95,27 @@ namespace General.Service.Api.Controllers.V10
             if (!validateResult.IsValid)
                 throw new ArgumentException(validateResult.ToString());
 
-            var result = await this._mediator.Send(new UpdateUserCommand(model));
-            return NoContent();
+            await this._mediator.Send(new UpdateUserCommand(model));
+            return Ok();
+        }
+
+        /// <summary>
+        /// Удаление записи
+        /// </summary>
+        /// <param name="id">ид пользователя</param>
+        /// <returns></returns>
+        [HttpDelete("{id}")]
+        [SwaggerOperation(Description = "Удаление существующего пользователя")]
+        [SwaggerResponse((int)HttpStatusCode.OK, Description = "Удаление прошло удачно")]
+        [SwaggerResponse((int)HttpStatusCode.BadRequest, Description = "Неверно указаны параметры")]
+        [SwaggerResponse((int)HttpStatusCode.NotFound, Description = "Не найдена запись пользователя")]
+        public async Task<IActionResult> DeleteAsync([Required] int id)
+        {
+            if(id <= 0)
+                throw new ArgumentException("Не указан идентификатор записи");
+
+            await this._mediator.Send(new DeleteUserCommand(id));
+            return Ok();
         }
     }
 }

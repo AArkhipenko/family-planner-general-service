@@ -55,7 +55,14 @@
             Изменение существующего пользователя
             </summary>
             <param name="model">модель пользователя</param>
-            <returns>идентификатор пользователя</returns>
+            <returns></returns>
+        </member>
+        <member name="M:General.Service.Api.Controllers.V10.UsersController.DeleteAsync(System.Int32)">
+            <summary>
+            Удаление записи
+            </summary>
+            <param name="id">ид пользователя</param>
+            <returns></returns>
         </member>
         <member name="T:General.Service.Api.Extensions.MediatorExtensions">
             <summary>
