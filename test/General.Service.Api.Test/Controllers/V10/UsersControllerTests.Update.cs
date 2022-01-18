@@ -11,7 +11,7 @@ namespace General.Service.Api.Test.Controllers.V10
     public partial class UsersControllerTests
     {
         [Fact]
-        public async Task Update_users_has_not_errors()
+        public async Task Update_user_has_not_errors()
         {
             // Arrage
             var model = new UpdateUserDTO
@@ -36,7 +36,7 @@ namespace General.Service.Api.Test.Controllers.V10
         }
 
         [Fact]
-        public async Task Update_users_has_id_BadRequest_error()
+        public async Task Update_user_has_id_BadRequest_error()
         {
             // Arrage
             var model = new UpdateUserDTO
@@ -55,7 +55,7 @@ namespace General.Service.Api.Test.Controllers.V10
         }
 
         [Fact]
-        public async Task Update_users_has_id_NotFound_error()
+        public async Task Update_user_has_id_NotFound_error()
         {
             // Arrage
             var model = new UpdateUserDTO
@@ -74,7 +74,7 @@ namespace General.Service.Api.Test.Controllers.V10
         }
 
         [Fact]
-        public async Task Update_users_has_name_BadRequest_error()
+        public async Task Update_user_has_name_BadRequest_error()
         {
             // Arrage
             var model = new UpdateUserDTO
@@ -93,7 +93,7 @@ namespace General.Service.Api.Test.Controllers.V10
         }
 
         [Fact]
-        public async Task Update_users_has_surname_BadRequest_error()
+        public async Task Update_user_has_surname_BadRequest_error()
         {
             // Arrage
             var model = new UpdateUserDTO
@@ -112,7 +112,7 @@ namespace General.Service.Api.Test.Controllers.V10
         }
 
         [Fact]
-        public async Task Update_users_has_birthday_BadRequest_error()
+        public async Task Update_user_has_birthday_BadRequest_error()
         {
             // Arrage
             var model = new UpdateUserDTO
