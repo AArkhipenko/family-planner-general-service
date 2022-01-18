@@ -19,9 +19,10 @@ using Xunit;
 
 namespace General.Service.Api.Test.Controllers.V10
 {
-    public class UsersControllerTests
+    public partial class UsersControllerTests
     {
         private readonly HttpClient _client;
+        private readonly IWebHost _host;
         public UsersControllerTests()
         {
             var server = new TestServer(
@@ -47,55 +48,7 @@ namespace General.Service.Api.Test.Controllers.V10
                 .UseStartup<Startup>());
 
             _client = server.CreateClient();
-        }
-
-        [Fact]
-        public async Task Get_users_list_has_not_errors()
-        {
-            // Arrage
-            var query = HttpUtility.ParseQueryString(string.Empty);
-            query["offset"] = "0";
-            query["count"] = "10";
-
-            // Act
-            var response = await _client.GetAsync($"/user/v10/list?{query.ToString()}");
-
-            // Assert
-            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-
-            var result = await response.ReadJsonAsync<IEnumerable<UserListDTO>>();
-            Assert.NotNull(result);
-            Assert.NotEmpty(result);
-        }
-
-        [Fact]
-        public async Task Get_users_list_has_offset_error()
-        {
-            // Arrage
-            var query = HttpUtility.ParseQueryString(string.Empty);
-            query["offset"] = "-1";
-            query["count"] = "10";
-
-            // Act
-            var response = await _client.GetAsync($"/user/v10/list?{query.ToString()}");
-
-            // Assert
-            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
-        }
-
-        [Fact]
-        public async Task Get_users_list_has_count_error()
-        {
-            // Arrage
-            var query = HttpUtility.ParseQueryString(string.Empty);
-            query["offset"] = "0";
-            query["count"] = "0";
-
-            // Act
-            var response = await _client.GetAsync($"/user/v10/list?{query.ToString()}");
-
-            // Assert
-            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+            _host = server.Host;
         }
     }
 }
