@@ -1,5 +1,4 @@
 ﻿using AutoFixture;
-using General.Service.Application.Users.DTO;
 using General.Service.Infrastructure.Database;
 using General.Service.Infrastructure.Database.Tables;
 using Microsoft.AspNetCore.Hosting;
@@ -7,16 +6,8 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
-using Moq;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using Xunit;
 
 namespace General.Service.Api.Test.Controllers.V10
 {
