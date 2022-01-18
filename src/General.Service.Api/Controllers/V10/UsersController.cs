@@ -55,6 +55,24 @@ namespace General.Service.Api.Controllers.V10
             return Ok(result);
         }
 
+        /// <summary>
+        /// Получение информации по пользователю
+        /// </summary>
+        /// <param name="id">ид пользователя</param>
+        /// <returns>модель пользователя</returns>
+        [HttpGet("{id}")]
+        [SwaggerOperation(Description = "Возвращает информацию по пользователю")]
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(UserDTO), Description = "Информация по пользователю")]
+        [SwaggerResponse((int)HttpStatusCode.BadRequest, Description = "Неверно указаны параметры")]
+        [SwaggerResponse((int)HttpStatusCode.NotFound, Description = "Не найдена запись пользователя")]
+        public async Task<IActionResult> GetAsync([Required] int id)
+        {
+            if (id <= 0)
+                throw new ArgumentException("Не указан идентификатор записи");
+
+            var result = await this._mediator.Send(new GetUserQuery(id));
+            return Ok(result);
+        }
 
         /// <summary>
         /// Добавление нового пользователя
@@ -100,7 +118,7 @@ namespace General.Service.Api.Controllers.V10
         }
 
         /// <summary>
-        /// Удаление записи
+        /// Удаление пользователя
         /// </summary>
         /// <param name="id">ид пользователя</param>
         /// <returns></returns>

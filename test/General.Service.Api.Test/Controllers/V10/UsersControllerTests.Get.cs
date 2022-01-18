@@ -7,39 +7,39 @@ namespace General.Service.Api.Test.Controllers.V10
     public partial class UsersControllerTests
     {
         [Fact]
-        public async Task Delete_user_has_not_errors()
+        public async Task Get_user_has_not_errors()
         {
             // Arrage
             int id = 3;
 
             // Act
-            var response = await _client.DeleteAsync($"/user/v10/{id}");
+            var response = await _client.GetAsync($"/user/v10/{id}");
 
             // Assert
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
 
         [Fact]
-        public async Task Delete_user_has_id_BadRequest_error()
+        public async Task Get_user_has_id_BadRequest_error()
         {
             // Arrage
             int id = -1;
 
             // Act
-            var response = await _client.DeleteAsync($"/user/v10/{id}");
+            var response = await _client.GetAsync($"/user/v10/{id}");
 
             // Assert
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
 
         [Fact]
-        public async Task Delete_user_has_id_NotFound_error()
+        public async Task Get_user_has_id_NotFound_error()
         {
             // Arrage
             int id = 999;
 
             // Act
-            var response = await _client.DeleteAsync($"/user/v10/{id}");
+            var response = await _client.GetAsync($"/user/v10/{id}");
 
             // Assert
             Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);

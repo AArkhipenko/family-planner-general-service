@@ -12,7 +12,7 @@ namespace General.Service.Api.Test.Controllers.V10
     public partial class UsersControllerTests
     {
         [Fact]
-        public async Task Create_users_has_not_errors()
+        public async Task Create_user_has_not_errors()
         {
             // Arrage
             var model = new CreateUserDTO
@@ -35,7 +35,7 @@ namespace General.Service.Api.Test.Controllers.V10
         }
 
         [Fact]
-        public async Task Create_users_has_name_BadRequest_error()
+        public async Task Create_user_has_name_BadRequest_error()
         {
             // Arrage
             var model = new CreateUserDTO
@@ -53,7 +53,7 @@ namespace General.Service.Api.Test.Controllers.V10
         }
 
         [Fact]
-        public async Task Create_users_has_surname_BadRequest_error()
+        public async Task Create_user_has_surname_BadRequest_error()
         {
             // Arrage
             var model = new CreateUserDTO
@@ -71,7 +71,7 @@ namespace General.Service.Api.Test.Controllers.V10
         }
 
         [Fact]
-        public async Task Create_users_has_birthday_BadRequest_error()
+        public async Task Create_user_has_birthday_BadRequest_error()
         {
             // Arrage
             var model = new CreateUserDTO

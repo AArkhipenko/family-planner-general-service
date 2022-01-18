@@ -18,6 +18,13 @@ namespace General.Service.Domain.Repositories
         IAsyncEnumerable<User> GetListAsync(int offset, int count);
 
         /// <summary>
+        /// Получение информации по пользователю
+        /// </summary>
+        /// <param name="id">идентификатор пользователя</param>
+        /// <returns>модель пользователя</returns>
+        Task<User> GetAsync(int id);
+
+        /// <summary>
         /// Создание пользователя
         /// </summary>
         /// <param name="model">данные пользователя</param>
