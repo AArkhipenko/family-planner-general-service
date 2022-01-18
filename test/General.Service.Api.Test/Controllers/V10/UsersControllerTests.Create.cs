@@ -40,8 +40,8 @@ namespace General.Service.Api.Test.Controllers.V10
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
             var newId = (long)(await response.ReadJsonAsync<object>());
-            var newModel = await context.Users.FindAsync((int)newId);
-            Assert.NotNull(newModel);
+            var member = await context.Users.FindAsync((int)newId);
+            Assert.NotNull(member);
         }
 
         [Fact]
