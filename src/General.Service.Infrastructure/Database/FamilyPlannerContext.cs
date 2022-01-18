@@ -24,12 +24,18 @@ namespace General.Service.Infrastructure.Database
         internal DbSet<User> Users { get; set; }
 
         /// <summary>
+        /// Таблица типов
+        /// </summary>
+        internal DbSet<Type> Types { get; set; }
+
+        /// <summary>
         /// Действия во время создания модели
         /// </summary>
         /// <param name="modelBuilder"><see cref="ModelBuilder" /></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             User.Configure(modelBuilder.Entity<User>());
+            Type.Configure(modelBuilder.Entity<Type>());
         }
     }
 }

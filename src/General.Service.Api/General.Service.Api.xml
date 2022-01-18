@@ -24,6 +24,26 @@
             Заголовок на странице swagger
             </summary>
         </member>
+        <member name="T:General.Service.Api.Controllers.V10.TypesController">
+            <summary>
+            Контроллер для получения информации по пользователям
+            </summary>
+        </member>
+        <member name="M:General.Service.Api.Controllers.V10.TypesController.#ctor(MediatR.IMediator)">
+            <summary>
+            Конструктор <see cref="T:General.Service.Api.Controllers.V10.TypesController" />
+            </summary>
+            <param name="mediator"><see cref="T:MediatR.IMediator" /></param>
+        </member>
+        <member name="M:General.Service.Api.Controllers.V10.TypesController.GetListByCodeAsync(System.Int32,System.Int32,System.String)">
+            <summary>
+            Списка типов с фильтрацией по коду
+            </summary>
+            <param name="offset">смещение (в количестве записей)</param>
+            <param name="count">количество записей</param>
+            <param name="code">код типа</param>
+            <returns>Список типов</returns>
+        </member>
         <member name="T:General.Service.Api.Controllers.V10.UsersController">
             <summary>
             Контроллер для получения информации по пользователям
