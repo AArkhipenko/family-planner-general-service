@@ -30,5 +30,12 @@ namespace General.Service.Domain.Repositories
         /// <param name="model">данные пользователя</param>
         /// <returns></returns>
         Task UpdateAsync(User model);
+
+        /// <summary>
+        /// Удаление пользователя
+        /// </summary>
+        /// <param name="id">идентификатор пользователя</param>
+        /// <returns></returns>
+        Task DeleteAsync(int id);
     }
 }

@@ -68,6 +68,13 @@ namespace General.Service.Infrastructure.Database.Repositories
             await this._context.SaveChangesAsync();
         }
 
+        public async Task DeleteAsync(int id)
+        {
+            var member = await this.GetMemberAsync(id);
+            this._context.Users.Remove(member);
+            await this._context.SaveChangesAsync();
+        }
+
         /// <summary>
         /// Поиск пользователя по ид
         /// </summary>
