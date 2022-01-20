@@ -64,7 +64,7 @@ namespace General.Service.Api.Controllers.V10
         [SwaggerOperation(Description = "Возвращает информацию по пользователю")]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(UserDTO), Description = "Информация по пользователю")]
         [SwaggerResponse((int)HttpStatusCode.BadRequest, Description = "Неверно указаны параметры")]
-        [SwaggerResponse((int)HttpStatusCode.NotFound, Description = "Не найдена запись пользователя")]
+        [SwaggerResponse((int)HttpStatusCode.NotFound, Description = "Не найдена запись")]
         public async Task<IActionResult> GetAsync([Required] int id)
         {
             if (id <= 0)
@@ -104,7 +104,7 @@ namespace General.Service.Api.Controllers.V10
         [SwaggerOperation(Description = "Изменение существующего пользователя")]
         [SwaggerResponse((int)HttpStatusCode.OK, Description = "Изменение прошло удачно")]
         [SwaggerResponse((int)HttpStatusCode.BadRequest, Description = "Неверно указаны параметры")]
-        [SwaggerResponse((int)HttpStatusCode.NotFound, Description = "Не найдена запись пользователя")]
+        [SwaggerResponse((int)HttpStatusCode.NotFound, Description = "Не найдена запись")]
         public async Task<IActionResult> UpdateAsync([FromBody][Required] UpdateUserDTO model)
         {
             var validator = new UpdateUserDTOValidator();
@@ -126,7 +126,7 @@ namespace General.Service.Api.Controllers.V10
         [SwaggerOperation(Description = "Удаление существующего пользователя")]
         [SwaggerResponse((int)HttpStatusCode.OK, Description = "Удаление прошло удачно")]
         [SwaggerResponse((int)HttpStatusCode.BadRequest, Description = "Неверно указаны параметры")]
-        [SwaggerResponse((int)HttpStatusCode.NotFound, Description = "Не найдена запись пользователя")]
+        [SwaggerResponse((int)HttpStatusCode.NotFound, Description = "Не найдена запись")]
         public async Task<IActionResult> DeleteAsync([Required] int id)
         {
             if(id <= 0)

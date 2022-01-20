@@ -31,5 +31,12 @@ namespace General.Service.Domain.Repositories
         /// <param name="model">модель нового типа</param>
         /// <returns>идентификатор новой записи</returns>
         Task<int> CreateAsync(Type model);
+
+        /// <summary>
+        /// Обновление существующего типа
+        /// </summary>
+        /// <param name="model">модель для обновления типа</param>
+        /// <returns></returns>
+        Task UpdateAsync(Type model);
     }
 }
