@@ -1,31 +1,25 @@
-﻿using General.Service.Domain.Exceptions;
-using General.Service.Domain.Repositories;
-using General.Service.Infrastructure.Database.Tables;
+﻿using General.Service.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 using DomainExt = General.Service.Domain.Models;
+using ApplicationExt = General.Service.Infrastructure.Database.Tables;
 
 namespace General.Service.Infrastructure.Database.Repositories
 {
     /// <summary>
     /// Репозиторий для работы с типами
     /// </summary>
-    internal class TypeRepository: ITypeRepository
+    internal class TypeRepository: BaseRepository, ITypeRepository
     {
-        private readonly FamilyPlannerContext _context;
-
         /// <summary>
         /// Конструктор <see cref="TypeRepository" />
         /// </summary>
         /// <param name="context">контекст базы данных</param>
-        public TypeRepository(FamilyPlannerContext context)
-        {
-            this._context = context ?? throw new ArgumentNullException(nameof(context));
-        }
+        public TypeRepository(FamilyPlannerContext context): base(context)
+        { }
 
         public IAsyncEnumerable<DomainExt.Type> GetListByCodeAsync(int offset, int count, string code)
         {
@@ -40,6 +34,15 @@ namespace General.Service.Infrastructure.Database.Repositories
                     x.Name,
                     x.Code))
                 .AsAsyncEnumerable();
+        }
+
+        public async Task<DomainExt.Type> GetAsync(int id)
+        {
+            var member = await this.GetMemberAsync<ApplicationExt.Type>(id);
+            return new DomainExt.Type(
+                member.Id,
+                member.Name,
+                member.Code);
         }
     }
 }
