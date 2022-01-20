@@ -17,5 +17,12 @@ namespace General.Service.Domain.Repositories
         /// <param name="code">код</param>
         /// <returns>асинхронный типов</returns>
         IAsyncEnumerable<Type> GetListByCodeAsync(int offset, int count, string code);
+
+        /// <summary>
+        /// Получение информации по типу
+        /// </summary>
+        /// <param name="id">идентификатор</param>
+        /// <returns>данные по типу</returns>
+        Task<Type> GetAsync(int id);
     }
 }

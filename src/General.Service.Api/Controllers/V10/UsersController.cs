@@ -17,7 +17,7 @@ namespace General.Service.Api.Controllers.V10
     /// Контроллер для получения информации по пользователям
     /// </summary>
     [Produces("application/json")]
-    [Route("user/v10")]
+    [Route("users/v10")]
     [ApiExplorerSettings(GroupName = "v10")]
     public class UsersController : Controller
     {

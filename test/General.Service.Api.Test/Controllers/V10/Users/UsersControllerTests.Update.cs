@@ -24,7 +24,7 @@ namespace General.Service.Api.Test.Controllers.V10
             var context = _host.Services.GetService<FamilyPlannerContext>();
 
             // Act
-            var response = await _client.PatchAsync($"/user/v10", model.ToHttpContent());
+            var response = await _client.PatchAsync($"/users/v10", model.ToHttpContent());
 
             // Assert
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
@@ -48,7 +48,7 @@ namespace General.Service.Api.Test.Controllers.V10
             };
 
             // Act
-            var response = await _client.PatchAsync($"/user/v10", model.ToHttpContent());
+            var response = await _client.PatchAsync($"/users/v10", model.ToHttpContent());
 
             // Assert
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
@@ -67,7 +67,7 @@ namespace General.Service.Api.Test.Controllers.V10
             };
 
             // Act
-            var response = await _client.PatchAsync($"/user/v10", model.ToHttpContent());
+            var response = await _client.PatchAsync($"/users/v10", model.ToHttpContent());
 
             // Assert
             Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
@@ -86,7 +86,7 @@ namespace General.Service.Api.Test.Controllers.V10
             };
 
             // Act
-            var response = await _client.PatchAsync($"/user/v10", model.ToHttpContent());
+            var response = await _client.PatchAsync($"/users/v10", model.ToHttpContent());
 
             // Assert
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
@@ -105,7 +105,7 @@ namespace General.Service.Api.Test.Controllers.V10
             };
 
             // Act
-            var response = await _client.PatchAsync($"/user/v10", model.ToHttpContent());
+            var response = await _client.PatchAsync($"/users/v10", model.ToHttpContent());
 
             // Assert
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
@@ -124,7 +124,7 @@ namespace General.Service.Api.Test.Controllers.V10
             };
 
             // Act
-            var response = await _client.PatchAsync($"/user/v10", model.ToHttpContent());
+            var response = await _client.PatchAsync($"/users/v10", model.ToHttpContent());
 
             // Assert
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);

@@ -15,7 +15,7 @@ namespace General.Service.Api.Controllers.V10
     /// Контроллер для получения информации по пользователям
     /// </summary>
     [Produces("application/json")]
-    [Route("type/v10")]
+    [Route("types/v10")]
     [ApiExplorerSettings(GroupName = "v10")]
     public class TypesController : Controller
     {
@@ -38,8 +38,8 @@ namespace General.Service.Api.Controllers.V10
         /// <param name="code">код типа</param>
         /// <returns>Список типов</returns>
         [HttpGet("list_by_code")]
-        [SwaggerOperation(Description = "Возвращает список пользователей")]
-        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(IAsyncEnumerable<TypeListDTO>), Description = "Список пользователей")]
+        [SwaggerOperation(Description = "Возвращает список типов с фильтрацией по коду")]
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(IAsyncEnumerable<TypeListDTO>), Description = "Список типов")]
         [SwaggerResponse((int)HttpStatusCode.BadRequest, Description = "Неверно указаны параметры")]
         public async Task<IActionResult> GetListByCodeAsync(
             [FromQuery] int offset = 0,
@@ -54,6 +54,25 @@ namespace General.Service.Api.Controllers.V10
                 throw new ArgumentException("Код обязателен для заполнения");
 
             var result = await this._mediator.Send(new GetTypeListQuery(offset, count, code));
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Получение информации по типу
+        /// </summary>
+        /// <param name="id">ид типа</param>
+        /// <returns>модель типа</returns>
+        [HttpGet("{id}")]
+        [SwaggerOperation(Description = "Возвращает информацию по типу")]
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(TypeDTO), Description = "Информация по типу")]
+        [SwaggerResponse((int)HttpStatusCode.BadRequest, Description = "Неверно указаны параметры")]
+        [SwaggerResponse((int)HttpStatusCode.NotFound, Description = "Не найдена запись типа")]
+        public async Task<IActionResult> GetAsync([Required] int id)
+        {
+            if (id <= 0)
+                throw new ArgumentException("Не указан идентификатор записи");
+
+            var result = await this._mediator.Send(new GetTypeQuery(id));
             return Ok(result);
         }
     }

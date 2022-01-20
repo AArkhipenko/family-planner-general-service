@@ -13,7 +13,7 @@ namespace General.Service.Api.Test.Controllers.V10
             int id = 3;
 
             // Act
-            var response = await _client.GetAsync($"/user/v10/{id}");
+            var response = await _client.GetAsync($"/users/v10/{id}");
 
             // Assert
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
@@ -26,7 +26,7 @@ namespace General.Service.Api.Test.Controllers.V10
             int id = -1;
 
             // Act
-            var response = await _client.GetAsync($"/user/v10/{id}");
+            var response = await _client.GetAsync($"/users/v10/{id}");
 
             // Assert
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
@@ -39,7 +39,7 @@ namespace General.Service.Api.Test.Controllers.V10
             int id = 999;
 
             // Act
-            var response = await _client.GetAsync($"/user/v10/{id}");
+            var response = await _client.GetAsync($"/users/v10/{id}");
 
             // Assert
             Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);

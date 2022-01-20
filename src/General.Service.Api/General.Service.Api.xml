@@ -44,6 +44,13 @@
             <param name="code">код типа</param>
             <returns>Список типов</returns>
         </member>
+        <member name="M:General.Service.Api.Controllers.V10.TypesController.GetAsync(System.Int32)">
+            <summary>
+            Получение информации по типу
+            </summary>
+            <param name="id">ид типа</param>
+            <returns>модель типа</returns>
+        </member>
         <member name="T:General.Service.Api.Controllers.V10.UsersController">
             <summary>
             Контроллер для получения информации по пользователям
