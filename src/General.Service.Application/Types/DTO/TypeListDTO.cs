@@ -1,9 +1,9 @@
 ﻿namespace General.Service.Application.Types.DTO
 {
     /// <summary>
-    /// DTO записи списка типов
+    /// DTO записи для создания нового типа
     /// </summary>
-    public class TypeListDTO: TypeDTO
+    public class CreateTypeDTO : TypeDTO
     {
     }
 }

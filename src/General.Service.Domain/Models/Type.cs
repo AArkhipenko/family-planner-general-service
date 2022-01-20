@@ -22,6 +22,19 @@
         }
 
         /// <summary>
+        /// Конструктор <see cref="Type" />
+        /// </summary>
+        /// <param name="name">наименование</param>
+        /// <param name="code">код</param>
+        public Type(
+            string name,
+            string code)
+        {
+            this.Name = name;
+            this.Code = code;
+        }
+
+        /// <summary>
         /// Идентификатор
         /// </summary>
         public int Id { get; }

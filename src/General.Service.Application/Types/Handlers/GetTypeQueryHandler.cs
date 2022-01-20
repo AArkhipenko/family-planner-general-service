@@ -3,10 +3,8 @@ using General.Service.Application.Types.Queries;
 using General.Service.Domain.Repositories;
 using MediatR;
 using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using DomainExt = General.Service.Domain.Models;
 
 namespace General.Service.Application.Types.Handlers
 {

@@ -44,5 +44,19 @@ namespace General.Service.Infrastructure.Database.Repositories
                 member.Name,
                 member.Code);
         }
+
+        public async Task<int> CreateAsync(DomainExt.Type model)
+        {
+            var member = new ApplicationExt.Type
+            {
+                Name = model.Name,
+                Code = model.Code
+            };
+
+            this._context.Types.Add(member);
+            await this._context.SaveChangesAsync();
+
+            return member.Id;
+        }
     }
 }
