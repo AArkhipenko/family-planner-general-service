@@ -24,18 +24,18 @@
             Заголовок на странице swagger
             </summary>
         </member>
-        <member name="T:General.Service.Api.Controllers.V10.TypesController">
+        <member name="T:General.Service.Api.Controllers.V10.TypeController">
             <summary>
             Контроллер для получения информации по пользователям
             </summary>
         </member>
-        <member name="M:General.Service.Api.Controllers.V10.TypesController.#ctor(MediatR.IMediator)">
+        <member name="M:General.Service.Api.Controllers.V10.TypeController.#ctor(MediatR.IMediator)">
             <summary>
-            Конструктор <see cref="T:General.Service.Api.Controllers.V10.TypesController" />
+            Конструктор <see cref="T:General.Service.Api.Controllers.V10.TypeController" />
             </summary>
             <param name="mediator"><see cref="T:MediatR.IMediator" /></param>
         </member>
-        <member name="M:General.Service.Api.Controllers.V10.TypesController.GetListByCodeAsync(System.Int32,System.Int32,System.String)">
+        <member name="M:General.Service.Api.Controllers.V10.TypeController.GetListByCodeAsync(System.Int32,System.Int32,System.String)">
             <summary>
             Списка типов с фильтрацией по коду
             </summary>
@@ -44,39 +44,46 @@
             <param name="code">код типа</param>
             <returns>Список типов</returns>
         </member>
-        <member name="M:General.Service.Api.Controllers.V10.TypesController.GetAsync(System.Int32)">
+        <member name="M:General.Service.Api.Controllers.V10.TypeController.GetAsync(System.Int32)">
             <summary>
             Получение информации по типу
             </summary>
             <param name="id">ид типа</param>
             <returns>модель типа</returns>
         </member>
-        <member name="M:General.Service.Api.Controllers.V10.TypesController.CreateAsync(General.Service.Application.Types.DTO.CreateTypeDTO)">
+        <member name="M:General.Service.Api.Controllers.V10.TypeController.CreateAsync(General.Service.Application.Types.DTO.CreateTypeDTO)">
             <summary>
             Добавление нового типа
             </summary>
             <param name="model">модель нового типа</param>
             <returns>идентификатор нового типа</returns>
         </member>
-        <member name="M:General.Service.Api.Controllers.V10.TypesController.UpdateAsync(General.Service.Application.Types.DTO.UpdateTypeDTO)">
+        <member name="M:General.Service.Api.Controllers.V10.TypeController.UpdateAsync(General.Service.Application.Types.DTO.UpdateTypeDTO)">
             <summary>
-            Изменение существующего пользователя
+            Изменение существующего типа
             </summary>
-            <param name="model">модель пользователя</param>
+            <param name="model">модель типа</param>
             <returns></returns>
         </member>
-        <member name="T:General.Service.Api.Controllers.V10.UsersController">
+        <member name="M:General.Service.Api.Controllers.V10.TypeController.DeleteAsync(System.Int32)">
+            <summary>
+            Удаление типа
+            </summary>
+            <param name="id">ид типа</param>
+            <returns></returns>
+        </member>
+        <member name="T:General.Service.Api.Controllers.V10.UserController">
             <summary>
             Контроллер для получения информации по пользователям
             </summary>
         </member>
-        <member name="M:General.Service.Api.Controllers.V10.UsersController.#ctor(MediatR.IMediator)">
+        <member name="M:General.Service.Api.Controllers.V10.UserController.#ctor(MediatR.IMediator)">
             <summary>
-            Конструктор <see cref="T:General.Service.Api.Controllers.V10.UsersController" />
+            Конструктор <see cref="T:General.Service.Api.Controllers.V10.UserController" />
             </summary>
             <param name="mediator"><see cref="T:MediatR.IMediator" /></param>
         </member>
-        <member name="M:General.Service.Api.Controllers.V10.UsersController.GetListAsync(System.Int32,System.Int32)">
+        <member name="M:General.Service.Api.Controllers.V10.UserController.GetListAsync(System.Int32,System.Int32)">
             <summary>
             Получение списка пользователей
             </summary>
@@ -84,28 +91,28 @@
             <param name="count">количество записей</param>
             <returns>Список пользователей</returns>
         </member>
-        <member name="M:General.Service.Api.Controllers.V10.UsersController.GetAsync(System.Int32)">
+        <member name="M:General.Service.Api.Controllers.V10.UserController.GetAsync(System.Int32)">
             <summary>
             Получение информации по пользователю
             </summary>
             <param name="id">ид пользователя</param>
             <returns>модель пользователя</returns>
         </member>
-        <member name="M:General.Service.Api.Controllers.V10.UsersController.CreateAsync(General.Service.Application.Users.DTO.CreateUserDTO)">
+        <member name="M:General.Service.Api.Controllers.V10.UserController.CreateAsync(General.Service.Application.Users.DTO.CreateUserDTO)">
             <summary>
             Добавление нового пользователя
             </summary>
             <param name="model">модель пользователя</param>
             <returns>идентификатор пользователя</returns>
         </member>
-        <member name="M:General.Service.Api.Controllers.V10.UsersController.UpdateAsync(General.Service.Application.Users.DTO.UpdateUserDTO)">
+        <member name="M:General.Service.Api.Controllers.V10.UserController.UpdateAsync(General.Service.Application.Users.DTO.UpdateUserDTO)">
             <summary>
             Изменение существующего пользователя
             </summary>
             <param name="model">модель пользователя</param>
             <returns></returns>
         </member>
-        <member name="M:General.Service.Api.Controllers.V10.UsersController.DeleteAsync(System.Int32)">
+        <member name="M:General.Service.Api.Controllers.V10.UserController.DeleteAsync(System.Int32)">
             <summary>
             Удаление пользователя
             </summary>

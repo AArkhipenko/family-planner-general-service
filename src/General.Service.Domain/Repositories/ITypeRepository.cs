@@ -38,5 +38,12 @@ namespace General.Service.Domain.Repositories
         /// <param name="model">модель для обновления типа</param>
         /// <returns></returns>
         Task UpdateAsync(Type model);
+
+        /// <summary>
+        /// Удаление записи
+        /// </summary>
+        /// <param name="id">ид записи</param>
+        /// <returns></returns>
+        Task DeleteAsync(int id);
     }
 }

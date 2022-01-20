@@ -19,7 +19,7 @@ namespace General.Service.Application.Types.Handlers
         /// <summary>
         /// Конструктор <see cref="CreateTypeCommandHandler" />
         /// </summary>
-        /// <param name="userRepo">репозиторий для работы с пользователями</param>
+        /// <param name="userRepo">репозиторий для работы с типами</param>
         public UpdateTypeCommandHandler(ITypeRepository typeRepo)
         {
             this._typeRepo = typeRepo ?? throw new ArgumentNullException(nameof(typeRepo));

@@ -19,15 +19,15 @@ namespace General.Service.Api.Controllers.V10
     [Produces("application/json")]
     [Route("users/v10")]
     [ApiExplorerSettings(GroupName = "v10")]
-    public class UsersController : Controller
+    public class UserController : Controller
     {
         private readonly IMediator _mediator;
 
         /// <summary>
-        /// Конструктор <see cref="UsersController" />
+        /// Конструктор <see cref="UserController" />
         /// </summary>
         /// <param name="mediator"><see cref="IMediator" /></param>
-        public UsersController(IMediator mediator)
+        public UserController(IMediator mediator)
         {
             this._mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
