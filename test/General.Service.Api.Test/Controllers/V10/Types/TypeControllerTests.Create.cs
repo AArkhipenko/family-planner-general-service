@@ -9,7 +9,7 @@ using Xunit;
 
 namespace General.Service.Api.Test.Controllers.V10
 {
-    public partial class TypesControllerTests
+    public partial class TypeControllerTests
     {
         [Fact]
         public async Task Create_type_has_not_errors()

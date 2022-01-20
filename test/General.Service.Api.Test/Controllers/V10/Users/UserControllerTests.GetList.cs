@@ -7,7 +7,7 @@ using Xunit;
 
 namespace General.Service.Api.Test.Controllers.V10
 {
-    public partial class UsersControllerTests
+    public partial class UserControllerTests
     {
         [Fact]
         public async Task Get_users_list_has_not_errors()

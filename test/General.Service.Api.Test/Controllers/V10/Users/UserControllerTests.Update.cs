@@ -8,7 +8,7 @@ using Xunit;
 
 namespace General.Service.Api.Test.Controllers.V10
 {
-    public partial class UsersControllerTests
+    public partial class UserControllerTests
     {
         [Fact]
         public async Task Update_user_has_not_errors()
