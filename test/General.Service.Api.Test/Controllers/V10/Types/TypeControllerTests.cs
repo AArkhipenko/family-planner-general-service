@@ -8,14 +8,15 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Net.Http;
+using InfraExt = General.Service.Infrastructure.Database.Tables;
 
 namespace General.Service.Api.Test.Controllers.V10
 {
-    public partial class UsersControllerTests
+    public partial class TypeControllerTests
     {
         private readonly HttpClient _client;
         private readonly IWebHost _host;
-        public UsersControllerTests()
+        public TypeControllerTests()
         {
             var server = new TestServer(
                 new WebHostBuilder()
@@ -33,20 +34,29 @@ namespace General.Service.Api.Test.Controllers.V10
                     context.Database.EnsureCreated();
                     context.Database.EnsureDeleted();
 
-                    context.Users.Add(
+                    context.Types.Add(
                         fixture
-                            .Build<User>()
+                            .Build<InfraExt.Type>()
                             .Do(x=> x.Id = 1)
+                            .Do(x=>x.Code = "code1")
                             .Create());
-                    context.Users.Add(
+                    context.Types.Add(
                         fixture
-                            .Build<User>()
+                            .Build<InfraExt.Type>()
                             .Do(x => x.Id = 2)
+                            .Do(x => x.Code = "code1")
                             .Create());
-                    context.Users.Add(
+                    context.Types.Add(
                         fixture
-                            .Build<User>()
+                            .Build<InfraExt.Type>()
                             .Do(x => x.Id = 3)
+                            .Do(x => x.Code = "code2")
+                            .Create());
+                    context.Types.Add(
+                        fixture
+                            .Build<InfraExt.Type>()
+                            .Do(x => x.Id = 4)
+                            .Do(x => x.Code = "code2")
                             .Create());
                     context.SaveChanges();
 

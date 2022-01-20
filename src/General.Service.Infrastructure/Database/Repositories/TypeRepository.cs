@@ -68,5 +68,12 @@ namespace General.Service.Infrastructure.Database.Repositories
 
             await this._context.SaveChangesAsync();
         }
+
+        public async Task DeleteAsync(int id)
+        {
+            var member = await this.GetMemberAsync<ApplicationExt.Type>(id);
+            this._context.Types.Remove(member);
+            await this._context.SaveChangesAsync();
+        }
     }
 }

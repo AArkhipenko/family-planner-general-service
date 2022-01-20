@@ -12,25 +12,24 @@ namespace General.Service.Application.Types.Handlers
     /// <summary>
     /// Выполнение запроса создания пользователя
     /// </summary>
-    public class CreateTypeCommandHandler : IRequestHandler<CreateTypeCommand, int>
+    public class DeleteTypeCommandHandler : IRequestHandler<DeleteTypeCommand, Unit>
     {
         private readonly ITypeRepository _typeRepo;
 
         /// <summary>
-        /// Конструктор <see cref="CreateTypeCommandHandler" />
+        /// Конструктор <see cref="DeleteTypeCommandHandler" />
         /// </summary>
         /// <param name="userRepo">репозиторий для работы с типами</param>
-        public CreateTypeCommandHandler(ITypeRepository typeRepo)
+        public DeleteTypeCommandHandler(ITypeRepository typeRepo)
         {
             this._typeRepo = typeRepo ?? throw new ArgumentNullException(nameof(typeRepo));
         }
 
         /// <inheritdoc/>
-        public async Task<int> Handle(CreateTypeCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteTypeCommand request, CancellationToken cancellationToken)
         {
-            return await this._typeRepo.CreateAsync(new DomainExt.Type(
-                request.Model.Name,
-                request.Model.Code));
+            await this._typeRepo.DeleteAsync(request.Id);
+            return default;
         }
     }
 }

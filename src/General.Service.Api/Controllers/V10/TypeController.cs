@@ -19,15 +19,15 @@ namespace General.Service.Api.Controllers.V10
     [Produces("application/json")]
     [Route("types/v10")]
     [ApiExplorerSettings(GroupName = "v10")]
-    public class TypesController : Controller
+    public class TypeController : Controller
     {
         private readonly IMediator _mediator;
 
         /// <summary>
-        /// Конструктор <see cref="TypesController" />
+        /// Конструктор <see cref="TypeController" />
         /// </summary>
         /// <param name="mediator"><see cref="IMediator" /></param>
-        public TypesController(IMediator mediator)
+        public TypeController(IMediator mediator)
         {
             this._mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
@@ -100,9 +100,9 @@ namespace General.Service.Api.Controllers.V10
         }
 
         /// <summary>
-        /// Изменение существующего пользователя
+        /// Изменение существующего типа
         /// </summary>
-        /// <param name="model">модель пользователя</param>
+        /// <param name="model">модель типа</param>
         /// <returns></returns>
         [HttpPatch]
         [SwaggerOperation(Description = "Изменение существующего типа")]
@@ -118,6 +118,25 @@ namespace General.Service.Api.Controllers.V10
                 throw new ArgumentException(validateResult.ToString());
 
             await this._mediator.Send(new UpdateTypeCommand(model));
+            return Ok();
+        }
+
+        /// <summary>
+        /// Удаление типа
+        /// </summary>
+        /// <param name="id">ид типа</param>
+        /// <returns></returns>
+        [HttpDelete("{id}")]
+        [SwaggerOperation(Description = "Удаление существующего типа")]
+        [SwaggerResponse((int)HttpStatusCode.OK, Description = "Удаление прошло удачно")]
+        [SwaggerResponse((int)HttpStatusCode.BadRequest, Description = "Неверно указаны параметры")]
+        [SwaggerResponse((int)HttpStatusCode.NotFound, Description = "Не найдена запись")]
+        public async Task<IActionResult> DeleteAsync([Required] int id)
+        {
+            if (id <= 0)
+                throw new ArgumentException("Не указан идентификатор записи");
+
+            await this._mediator.Send(new DeleteTypeCommand(id));
             return Ok();
         }
     }
