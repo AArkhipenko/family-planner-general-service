@@ -68,7 +68,7 @@ namespace General.Service.Api.Controllers.V10
         [SwaggerOperation(Description = "Возвращает информацию по типу")]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(TypeDTO), Description = "Информация по типу")]
         [SwaggerResponse((int)HttpStatusCode.BadRequest, Description = "Неверно указаны параметры")]
-        [SwaggerResponse((int)HttpStatusCode.NotFound, Description = "Не найдена запись типа")]
+        [SwaggerResponse((int)HttpStatusCode.NotFound, Description = "Не найдена запись")]
         public async Task<IActionResult> GetAsync([Required] int id)
         {
             if (id <= 0)
@@ -97,6 +97,28 @@ namespace General.Service.Api.Controllers.V10
 
             var result = await this._mediator.Send(new CreateTypeCommand(model));
             return Ok(result);
+        }
+
+        /// <summary>
+        /// Изменение существующего пользователя
+        /// </summary>
+        /// <param name="model">модель пользователя</param>
+        /// <returns></returns>
+        [HttpPatch]
+        [SwaggerOperation(Description = "Изменение существующего типа")]
+        [SwaggerResponse((int)HttpStatusCode.OK, Description = "Изменение прошло удачно")]
+        [SwaggerResponse((int)HttpStatusCode.BadRequest, Description = "Неверно указаны параметры")]
+        [SwaggerResponse((int)HttpStatusCode.NotFound, Description = "Не найдена запись")]
+        public async Task<IActionResult> UpdateAsync([FromBody][Required] UpdateTypeDTO model)
+        {
+            var validator = new UpdateTypeDTOValidator();
+            var validateResult = await validator.ValidateAsync(model);
+
+            if (!validateResult.IsValid)
+                throw new ArgumentException(validateResult.ToString());
+
+            await this._mediator.Send(new UpdateTypeCommand(model));
+            return Ok();
         }
     }
 }

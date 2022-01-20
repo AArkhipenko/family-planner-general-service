@@ -1,11 +1,6 @@
 ﻿using FluentValidation.TestHelper;
 using General.Service.Application.Types.DTO;
 using General.Service.Application.Types.Validators;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace General.Service.Application.Test.Types.Validators

@@ -58,5 +58,15 @@ namespace General.Service.Infrastructure.Database.Repositories
 
             return member.Id;
         }
+
+        public async Task UpdateAsync(DomainExt.Type model)
+        {
+            var member = await this.GetMemberAsync<ApplicationExt.Type>(model.Id);
+
+            member.Name = model.Name;
+            member.Code = model.Code;
+
+            await this._context.SaveChangesAsync();
+        }
     }
 }

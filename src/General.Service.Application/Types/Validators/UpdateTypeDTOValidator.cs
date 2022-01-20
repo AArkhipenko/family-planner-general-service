@@ -1,16 +1,16 @@
 ﻿using FluentValidation;
 
-namespace General.Service.Application.Users.Validators
+namespace General.Service.Application.Types.Validators
 {
     /// <summary>
     /// Валидатор данных для изменения пользователя
     /// </summary>
-    public class UpdateUserDTOValidator : CreateUserDTOValidator
+    public class UpdateTypeDTOValidator : CreateTypeDTOValidator
     {
         /// <summary>
-        /// Конструктор <see cref="UpdateUserDTOValidator" />
+        /// Конструктор <see cref="UpdateTypeDTOValidator" />
         /// </summary>
-        public UpdateUserDTOValidator() : base()
+        public UpdateTypeDTOValidator() : base()
         {
             RuleFor(t => t.Id)
                 .GreaterThan(0)

@@ -58,6 +58,13 @@
             <param name="model">модель нового типа</param>
             <returns>идентификатор нового типа</returns>
         </member>
+        <member name="M:General.Service.Api.Controllers.V10.TypesController.UpdateAsync(General.Service.Application.Types.DTO.UpdateTypeDTO)">
+            <summary>
+            Изменение существующего пользователя
+            </summary>
+            <param name="model">модель пользователя</param>
+            <returns></returns>
+        </member>
         <member name="T:General.Service.Api.Controllers.V10.UsersController">
             <summary>
             Контроллер для получения информации по пользователям
