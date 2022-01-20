@@ -18,7 +18,7 @@ namespace General.Service.Api.Test.Controllers.V10
             query["count"] = "10";
 
             // Act
-            var response = await _client.GetAsync($"/user/v10/list?{query.ToString()}");
+            var response = await _client.GetAsync($"/users/v10/list?{query.ToString()}");
 
             // Assert
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
@@ -37,7 +37,7 @@ namespace General.Service.Api.Test.Controllers.V10
             query["count"] = "10";
 
             // Act
-            var response = await _client.GetAsync($"/user/v10/list?{query.ToString()}");
+            var response = await _client.GetAsync($"/users/v10/list?{query.ToString()}");
 
             // Assert
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
@@ -52,7 +52,7 @@ namespace General.Service.Api.Test.Controllers.V10
             query["count"] = "0";
 
             // Act
-            var response = await _client.GetAsync($"/user/v10/list?{query.ToString()}");
+            var response = await _client.GetAsync($"/users/v10/list?{query.ToString()}");
 
             // Assert
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);

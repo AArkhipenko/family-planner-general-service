@@ -19,7 +19,7 @@ namespace General.Service.Api.Test.Controllers.V10
             query["code"] = "code1";
 
             // Act
-            var response = await _client.GetAsync($"/type/v10/list_by_code?{query.ToString()}");
+            var response = await _client.GetAsync($"/types/v10/list_by_code?{query.ToString()}");
 
             // Assert
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
@@ -40,7 +40,7 @@ namespace General.Service.Api.Test.Controllers.V10
             query["code"] = "code1";
 
             // Act
-            var response = await _client.GetAsync($"/type/v10/list_by_code?{query.ToString()}");
+            var response = await _client.GetAsync($"/types/v10/list_by_code?{query.ToString()}");
 
             // Assert
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
@@ -56,7 +56,7 @@ namespace General.Service.Api.Test.Controllers.V10
             query["code"] = "code1";
 
             // Act
-            var response = await _client.GetAsync($"/type/v10/list_by_code?{query.ToString()}");
+            var response = await _client.GetAsync($"/types/v10/list_by_code?{query.ToString()}");
 
             // Assert
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
@@ -72,7 +72,7 @@ namespace General.Service.Api.Test.Controllers.V10
             query["code"] = string.Empty;
 
             // Act
-            var response = await _client.GetAsync($"/type/v10/list_by_code?{query.ToString()}");
+            var response = await _client.GetAsync($"/types/v10/list_by_code?{query.ToString()}");
 
             // Assert
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);

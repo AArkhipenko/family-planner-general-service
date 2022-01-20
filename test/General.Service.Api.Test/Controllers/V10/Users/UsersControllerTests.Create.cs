@@ -24,7 +24,7 @@ namespace General.Service.Api.Test.Controllers.V10
             var context = _host.Services.GetService<FamilyPlannerContext>();
 
             // Act
-            var response = await _client.PostAsJsonAsync<CreateUserDTO>($"/user/v10", model);
+            var response = await _client.PostAsJsonAsync<CreateUserDTO>($"/users/v10", model);
 
             // Assert
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
@@ -46,7 +46,7 @@ namespace General.Service.Api.Test.Controllers.V10
             };
 
             // Act
-            var response = await _client.PostAsJsonAsync<CreateUserDTO>($"/user/v10", model);
+            var response = await _client.PostAsJsonAsync<CreateUserDTO>($"/users/v10", model);
 
             // Assert
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
@@ -64,7 +64,7 @@ namespace General.Service.Api.Test.Controllers.V10
             };
 
             // Act
-            var response = await _client.PostAsJsonAsync<CreateUserDTO>($"/user/v10", model);
+            var response = await _client.PostAsJsonAsync<CreateUserDTO>($"/users/v10", model);
 
             // Assert
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
@@ -82,7 +82,7 @@ namespace General.Service.Api.Test.Controllers.V10
             };
 
             // Act
-            var response = await _client.PostAsJsonAsync<CreateUserDTO>($"/user/v10", model);
+            var response = await _client.PostAsJsonAsync<CreateUserDTO>($"/users/v10", model);
 
             // Assert
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
