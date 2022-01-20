@@ -1,5 +1,7 @@
-﻿using General.Service.Application.Types.DTO;
+﻿using General.Service.Application.Types.Commands;
+using General.Service.Application.Types.DTO;
 using General.Service.Application.Types.Queries;
+using General.Service.Application.Types.Validators;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -73,6 +75,27 @@ namespace General.Service.Api.Controllers.V10
                 throw new ArgumentException("Не указан идентификатор записи");
 
             var result = await this._mediator.Send(new GetTypeQuery(id));
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Добавление нового типа
+        /// </summary>
+        /// <param name="model">модель нового типа</param>
+        /// <returns>идентификатор нового типа</returns>
+        [HttpPost]
+        [SwaggerOperation(Description = "Добавление нового типа")]
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(int), Description = "Создание прошло удачно")]
+        [SwaggerResponse((int)HttpStatusCode.BadRequest, Description = "Неверно указаны параметры")]
+        public async Task<IActionResult> CreateAsync([FromBody][Required] CreateTypeDTO model)
+        {
+            var validator = new CreateTypeDTOValidator();
+            var validateResult = await validator.ValidateAsync(model);
+
+            if (!validateResult.IsValid)
+                throw new ArgumentException(validateResult.ToString());
+
+            var result = await this._mediator.Send(new CreateTypeCommand(model));
             return Ok(result);
         }
     }

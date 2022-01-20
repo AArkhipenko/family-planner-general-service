@@ -10,22 +10,74 @@ using Xunit;
 
 namespace General.Service.Application.Test.Users.Validators
 {
-    public class UpdateUserDTOValidatorTests : CreateUserDTOValidatorTests
+    public class CreateUserDTOValidatorTests
     {
         [Fact]
-        public void Update_user_validation_has_id_error()
+        public void Create_user_validation_has_not_errors()
         {
             var model = new CreateUserDTO
             {
-                Id = -1,
                 Name = "test",
                 Surname = "test",
                 Birthday = DateTime.Now.AddYears(-18)
             };
 
-            var validator = new UpdateUserDTOValidator();
+            var validator = new CreateUserDTOValidator();
             var result = validator.TestValidate(model);
-            result.ShouldHaveValidationErrorFor(x => x.Id);
+            result.ShouldNotHaveAnyValidationErrors();
+        }
+
+        [Fact]
+        public void Create_user_validation_has_name_error()
+        {
+            var model = new CreateUserDTO
+            {
+                Name = string.Empty,
+                Surname = "test",
+                Birthday = DateTime.Now.AddYears(-18)
+            };
+
+            var validator = new CreateUserDTOValidator();
+            var result = validator.TestValidate(model);
+            result.ShouldHaveValidationErrorFor(x => x.Name);
+
+            model.Name = null;
+            result = validator.TestValidate(model);
+            result.ShouldHaveValidationErrorFor(x => x.Name);
+        }
+
+        [Fact]
+        public void Create_user_validation_has_surname_error()
+        {
+            var model = new CreateUserDTO
+            {
+                Name = "test",
+                Surname = string.Empty,
+                Birthday = DateTime.Now.AddYears(-18)
+            };
+
+            var validator = new CreateUserDTOValidator();
+            var result = validator.TestValidate(model);
+            result.ShouldHaveValidationErrorFor(x => x.Surname);
+
+            model.Surname = null;
+            result = validator.TestValidate(model);
+            result.ShouldHaveValidationErrorFor(x => x.Surname);
+        }
+
+        [Fact]
+        public void Create_user_validation_has_birthday_error()
+        {
+            var model = new CreateUserDTO
+            {
+                Name = "test",
+                Surname = string.Empty,
+                Birthday = DateTime.Now
+            };
+
+            var validator = new CreateUserDTOValidator();
+            var result = validator.TestValidate(model);
+            result.ShouldHaveValidationErrorFor(x => x.Birthday);
         }
     }
 }

@@ -51,6 +51,13 @@
             <param name="id">ид типа</param>
             <returns>модель типа</returns>
         </member>
+        <member name="M:General.Service.Api.Controllers.V10.TypesController.CreateAsync(General.Service.Application.Types.DTO.CreateTypeDTO)">
+            <summary>
+            Добавление нового типа
+            </summary>
+            <param name="model">модель нового типа</param>
+            <returns>идентификатор нового типа</returns>
+        </member>
         <member name="T:General.Service.Api.Controllers.V10.UsersController">
             <summary>
             Контроллер для получения информации по пользователям
